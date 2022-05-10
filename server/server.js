@@ -1,18 +1,18 @@
 const express = require("express");
-const { where } = require("sequelize");
+const { Board } = require("../models");
 const app = express();
-
 const sequelize = require("../models").sequelize;
-sequelize.sync();
-// sequelize.app.use(express.json());
-
 const Models = require("../models");
+
+sequelize.sync();
 
 async function FindAction() {
   let find = await Models.Board.findAll({ raw: true });
   find.forEach((element) => {
     console.log(element);
   });
+
+  return find;
 }
 
 async function InsertAction() {
@@ -47,7 +47,17 @@ async function DeleteAction() {
 }
 
 // DeleteTodos();
-FindAction();
+// FindAction();
+
+app.get("/", (req, res) => {
+  Board.findAll()
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      throw err;
+    });
+});
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
