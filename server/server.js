@@ -6,17 +6,17 @@ const sequelize = require("../models").sequelize;
 sequelize.sync();
 // sequelize.app.use(express.json());
 
-const tsc = require("../models");
+const Models = require("../models");
 
 async function FindAction() {
-  let vsss = await tsc.Board.findAll({ raw: true });
-  vsss.forEach((element) => {
+  let find = await Models.Board.findAll({ raw: true });
+  find.forEach((element) => {
     console.log(element);
   });
 }
 
 async function InsertAction() {
-  let insert = await tsc.Board.create({
+  let insert = await Models.Board.create({
     id: "",
     date: "",
     title: "New Test Title!",
@@ -24,7 +24,7 @@ async function InsertAction() {
 }
 
 async function UpdateAction() {
-  let update = await tsc.Board.update(
+  let update = await Models.Board.update(
     { Title: "Update Title!" },
     { where: { id: "1" } }
   )
@@ -37,7 +37,7 @@ async function UpdateAction() {
 }
 
 async function DeleteAction() {
-  let deletes = await tsc.Board.destroy({ where: { id: 1 } })
+  let deletes = await Models.Board.destroy({ where: { id: 1 } })
     .then((result) => {
       console.log(result);
     })
