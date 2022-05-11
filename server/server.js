@@ -3,8 +3,10 @@ const { Board } = require("../models");
 const app = express();
 const sequelize = require("../models").sequelize;
 const Models = require("../models");
+const cors = require("cors");
 
 sequelize.sync();
+app.use(cors());
 
 async function FindAction() {
   let find = await Models.Board.findAll({ raw: true });
@@ -49,7 +51,7 @@ async function DeleteAction() {
 // DeleteTodos();
 // FindAction();
 
-app.get("/", (req, res) => {
+app.get("/get/data", (req, res) => {
   Board.findAll()
     .then((result) => {
       res.json(result);
