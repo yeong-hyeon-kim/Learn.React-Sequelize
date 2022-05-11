@@ -21,28 +21,30 @@ function App() {
   }, []);
 
   let Banner = () => {
-    let list = async () => {
-      const res = await axios.get("http://localhost:4000/get/data");
-
-      if (res.data[0] === undefined) {
-        let cover = [];
-        cover.push(res.data);
-      }
-
-      setState({ list: res.data });
-    };
-
-    return <div>List</div>;
+    return <div>REACTIVE</div>;
   };
 
   let List = () => {
     const ItemList = state.list.map((item) => (
-      <li key={item["id"]}>
-        {item["id"]}, {item["title"]}, {item["contents"]}, {item["date"]}
-      </li>
+      <tr key={item["id"]}>
+        <td>{item["id"]}</td>
+        <td>{item["title"]}</td>
+        <td>{item["contents"]}</td>
+        <td style={{ backgroundColor: "indigo" }}>{item["date"]}</td>
+      </tr>
     ));
 
-    return <div>{ItemList}</div>;
+    return (
+      <table className="">
+        <tr>
+          <th>ID</th>
+          <th>TITLE</th>
+          <th>CONTENT</th>
+          <th>DATE</th>
+        </tr>
+        {ItemList}
+      </table>
+    );
   };
 
   return (

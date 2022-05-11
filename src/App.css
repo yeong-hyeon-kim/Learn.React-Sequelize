@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+table{
+  width: 80%;
+  border-style: solid;
+  border-width: 1px;
+  border-collapse: collapse;
+  border-color: aqua;
+}
+
+td{
+  border-style: solid;
+  border-width: medium;
+  border-collapse: collapse;
+  border-color: aqua;
+  padding: 12px;
+}
+
+th{
+  border-style: solid;
+  border-width: medium;
+  border-collapse: collapse;
+  border-color: aqua;
+  background-color: steelblue;
+  padding: 12px;
+}
