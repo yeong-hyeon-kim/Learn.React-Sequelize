@@ -1,13 +1,18 @@
-const express = require("express");
 const { Board } = require("../models");
-const app = express();
+const express = require("express");
+const bodyParser = require("body-parser");
 const sequelize = require("../models").sequelize;
 const Models = require("../models");
 const cors = require("cors");
+const app = express();
 
 sequelize.sync();
 app.use(cors());
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// Console Test
 async function FindAction() {
   let find = await Models.Board.findAll({ raw: true });
   find.forEach((element) => {
@@ -48,9 +53,7 @@ async function DeleteAction() {
     });
 }
 
-// DeleteTodos();
-// FindAction();
-
+// API Get
 app.get("/get/data", (req, res) => {
   Board.findAll()
     .then((result) => {
