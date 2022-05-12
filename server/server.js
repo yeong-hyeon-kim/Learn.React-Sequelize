@@ -64,6 +64,18 @@ app.get("/get/data", (req, res) => {
     });
 });
 
+// API Post
+app.post("/add/data", (req, res) => {
+  console.log(req.body);
+  Models.Board.update(req.body, { where: req.body["id"] })
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`Server On : http://localhost:${PORT}/`);

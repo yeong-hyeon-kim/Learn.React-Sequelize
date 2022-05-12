@@ -4,6 +4,12 @@ import "./App.css";
 
 function App() {
   const [state, setState] = useState({ list: [] });
+  const [Insert, setInsert] = useState({
+    id: "",
+    title: "",
+    contents: "",
+    date: "",
+  });
 
   useEffect(() => {
     let list = async () => {
@@ -20,8 +26,53 @@ function App() {
     list();
   }, []);
 
+  //   id: 2,
+  //   title: "TEST Title",
+  //   contents: "TEST Contents",
+  //   date: "2022-05-10",
+
+  let Input = () => {
+    // const InsertValue = (e) => {
+    //   console.log(e.target);
+    // };
+
+    // const InsertValue = onChangeInsertValue = (e) => {
+
+    // });
+    //onChange={onChangeInsertValue}
+
+    return (
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <button
+            type="submit"
+            onClick={async (e) => {
+              console.log("Insert!");
+              console.log(
+                await axios("http://localhost:4000/add/data", {
+                  method: "post",
+                  data: { R: "s" },
+                  headers: {
+                    "Content-type": "application/json",
+                    Accept: "*/*",
+                  },
+                })
+              );
+            }}
+          >
+            등록
+          </button>
+        </td>
+      </tr>
+    );
+  };
+
   let Banner = () => {
-    return <div>REACTIVE</div>;
+    return <div className="Banners">REACTIVE</div>;
   };
 
   let List = () => {
@@ -30,19 +81,54 @@ function App() {
         <td>{item["id"]}</td>
         <td>{item["title"]}</td>
         <td>{item["contents"]}</td>
-        <td style={{ backgroundColor: "indigo" }}>{item["date"]}</td>
+        <td>{item["date"]}</td>
+        <td>
+          <button
+            type="submit"
+            onClick={async (e) => {
+              console.log("Update!");
+              console.log(item);
+              console.log(
+                await axios("http://localhost:4000/add/data", {
+                  method: "post",
+                  data: item,
+                  headers: {
+                    "Content-type": "application/json",
+                    Accept: "*/*",
+                  },
+                })
+              );
+            }}
+          >
+            수정
+          </button>
+          <button
+            type="submit"
+            onClick={async (e) => {
+              console.log("Delete!");
+            }}
+          >
+            삭제
+          </button>
+        </td>
       </tr>
     ));
 
     return (
       <table className="">
-        <tr>
-          <th>ID</th>
-          <th>TITLE</th>
-          <th>CONTENT</th>
-          <th>DATE</th>
-        </tr>
-        {ItemList}
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>TITLE</th>
+            <th>CONTENT</th>
+            <th>DATE</th>
+            <th>ACTION</th>
+          </tr>
+        </thead>
+        <tbody>{ItemList}</tbody>
+        <tfoot>
+          <Input></Input>
+        </tfoot>
       </table>
     );
   };

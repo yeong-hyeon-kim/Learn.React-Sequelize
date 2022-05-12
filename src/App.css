@@ -37,6 +37,15 @@
   }
 }
 
+.Banners{
+  margin: 15px;
+  padding: 10px;
+}
+
+button{
+  margin: 5px;
+}
+
 table{
   width: 80%;
   border-style: solid;
