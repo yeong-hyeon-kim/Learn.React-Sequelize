@@ -6,9 +6,11 @@ const Models = require("../models");
 const cors = require("cors");
 const app = express();
 
+// Sequelize Sync
 sequelize.sync();
 app.use(cors());
 
+// Apply bodyParser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -64,11 +66,14 @@ app.get("/get/data", (req, res) => {
     });
 });
 
-// API Post
-
+// REST API
+// POST
 app.post("/add/data", (req, res) => {
   console.log(req.body);
-  Models.Board.create(req.body)
+
+  let reqData = req.body;
+
+  Models.Board.create(reqData)
     .then((result) => {
       console.log(result);
     })
@@ -77,11 +82,13 @@ app.post("/add/data", (req, res) => {
     });
 });
 
-// API Put
+// Put
 app.put("/update/data", (req, res) => {
   console.log(req.body);
-  console.log(req.body["id"]);
-  Models.Board.update(req.body, { where: req.body["id"], truncate: true })
+
+  let reqData = req.body;
+
+  Models.Board.update(req.body, { where: reqData["id"], truncate: true })
     .then((result) => {
       console.log(result);
     })
@@ -90,10 +97,13 @@ app.put("/update/data", (req, res) => {
     });
 });
 
-// API Delete
+// DELETE
 app.delete("/delete/data", (req, res) => {
   console.log(req.body);
-  Models.Board.destroy({ where: { id: Number(req.body["id"]) } })
+
+  let reqData = req.body;
+
+  Models.Board.destroy({ where: { id: Number(reqData["id"]) } })
     .then((result) => {
       console.log(result);
     })
@@ -102,6 +112,7 @@ app.delete("/delete/data", (req, res) => {
     });
 });
 
+// Server On
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`Server On : http://localhost:${PORT}/`);
