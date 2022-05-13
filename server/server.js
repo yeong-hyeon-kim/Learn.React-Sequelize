@@ -59,6 +59,7 @@ async function DeleteAction() {
 app.get("/get/data", (req, res) => {
   Board.findAll()
     .then((result) => {
+      console.log(result);
       res.json(result);
     })
     .catch((err) => {

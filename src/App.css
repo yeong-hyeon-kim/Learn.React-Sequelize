@@ -42,16 +42,40 @@
   padding: 10px;
 }
 
+.BtnUpdate{
+  background-color: mediumslateblue;
+  border-color: white;
+  color: white;
+  font-weight: bolder;
+}
+
+.BtnDelete {
+  background-color: mediumturquoise;
+  border-color: white;
+  font-weight: bold;
+}
+
+.BtnInsert {
+  background-color:mediumseagreen;
+  border-color: white;
+  font-weight: bold;
+}
+
+input{
+  margin-bottom: 1vh;
+}
+
 button{
   margin: 5px;
 }
 
 table{
-  width: 80%;
+  width: 100vh;
   border-style: solid;
   border-width: 1px;
   border-collapse: collapse;
   border-color: aqua;
+  font-size: calc(10px + 2vmin);
 }
 
 td{
@@ -59,7 +83,8 @@ td{
   border-width: medium;
   border-collapse: collapse;
   border-color: aqua;
-  padding: 12px;
+  padding: 10px;
+  font-size: calc(6px + 2vmin);
 }
 
 th{
@@ -68,5 +93,6 @@ th{
   border-collapse: collapse;
   border-color: aqua;
   background-color: steelblue;
-  padding: 12px;
+  padding: 5px;
+  font-size: calc(8px + 2vmin);
 }
