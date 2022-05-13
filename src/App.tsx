@@ -113,7 +113,7 @@ function App() {
             name={item["id"]}
             type="submit"
             onClick={async (e: any) => {
-              const { value, name } = e.target;
+              const { name } = e.target;
               console.log(name);
               console.log(e.target);
 
