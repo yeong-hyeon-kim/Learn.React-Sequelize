@@ -39,7 +39,7 @@ function App() {
   let Input = () => {
     return (
       <tr>
-        <td>{/* <input onChange={onChange} value={id}></input> */}</td>
+        <td></td>
         <td>
           <input name="title" value={title} onChange={onChanges}></input>
         </td>
