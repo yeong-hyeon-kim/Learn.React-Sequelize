@@ -5,13 +5,12 @@ import "./App.css";
 function App() {
   const [state, setState] = useState({ list: [] });
   const [insert, setInsert] = useState({
-    id: "",
     title: "",
     contents: "",
     date: "",
   });
 
-  const { id, title, contents, date } = insert;
+  const { title, contents, date } = insert;
 
   const onChanges = (e: any) => {
     const { value, name } = e.target;
@@ -42,13 +41,13 @@ function App() {
       <tr>
         <td>{/* <input onChange={onChange} value={id}></input> */}</td>
         <td>
-          <input onCopy={onChanges}></input>
+          <input name="title" value={title} onChange={onChanges}></input>
         </td>
         <td>
-          <input></input>
+          <input name="contents" value={contents} onChange={onChanges}></input>
         </td>
         <td>
-          <input></input>
+          <input name="date" value={date} onChange={onChanges}></input>
         </td>
         <td>
           <button
@@ -59,7 +58,11 @@ function App() {
               console.log(
                 await axios("http://localhost:4000/add/data", {
                   method: "post",
-                  data: { insert },
+                  data: {
+                    title: insert["title"],
+                    contents: insert["contents"],
+                    date: insert["date"],
+                  },
                   headers: {
                     "Content-type": "application/json",
                     Accept: "*/*",
@@ -89,7 +92,7 @@ function App() {
         <td>
           <button
             type="submit"
-            onClick={async (e) => {
+            onClick={async (e: any) => {
               console.log("Update!");
               console.log(item);
               console.log(

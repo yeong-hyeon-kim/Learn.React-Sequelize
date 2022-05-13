@@ -73,7 +73,18 @@ app.post("/add/data", (req, res) => {
 
   let reqData = req.body;
 
-  Models.Board.create(reqData)
+  console.log(reqData);
+  console.log({
+    title: reqData["title"],
+    contents: reqData["contents"],
+    date: reqData["date"],
+  });
+
+  Models.Board.create({
+    title: reqData["title"],
+    contents: reqData["contents"],
+    date: reqData["date"],
+  })
     .then((result) => {
       console.log(result);
     })
