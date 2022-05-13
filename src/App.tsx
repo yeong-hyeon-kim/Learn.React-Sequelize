@@ -4,12 +4,23 @@ import "./App.css";
 
 function App() {
   const [state, setState] = useState({ list: [] });
-  const [Insert, setInsert] = useState({
+  const [insert, setInsert] = useState({
     id: "",
     title: "",
     contents: "",
     date: "",
   });
+
+  const { id, title, contents, date } = insert;
+
+  const onChanges = (e: any) => {
+    const { value, name } = e.target;
+    console.log(value);
+    setInsert({
+      ...insert,
+      [name]: value,
+    });
+  };
 
   useEffect(() => {
     let list = async () => {
@@ -26,36 +37,29 @@ function App() {
     list();
   }, []);
 
-  //   id: 2,
-  //   title: "TEST Title",
-  //   contents: "TEST Contents",
-  //   date: "2022-05-10",
-
   let Input = () => {
-    // const InsertValue = (e) => {
-    //   console.log(e.target);
-    // };
-
-    // const InsertValue = onChangeInsertValue = (e) => {
-
-    // });
-    //onChange={onChangeInsertValue}
-
     return (
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>{/* <input onChange={onChange} value={id}></input> */}</td>
+        <td>
+          <input onCopy={onChanges}></input>
+        </td>
+        <td>
+          <input></input>
+        </td>
+        <td>
+          <input></input>
+        </td>
         <td>
           <button
             type="submit"
-            onClick={async (e) => {
+            onClick={async (e: any) => {
               console.log("Insert!");
+              console.log(insert);
               console.log(
                 await axios("http://localhost:4000/add/data", {
                   method: "post",
-                  data: { R: "s" },
+                  data: { insert },
                   headers: {
                     "Content-type": "application/json",
                     Accept: "*/*",
@@ -103,9 +107,23 @@ function App() {
             수정
           </button>
           <button
+            name={item["id"]}
             type="submit"
-            onClick={async (e) => {
-              console.log("Delete!");
+            onClick={async (e: any) => {
+              const { value, name } = e.target;
+              console.log(name);
+              console.log(e.target);
+
+              console.log(
+                await axios("http://localhost:4000/delete/data", {
+                  method: "delete",
+                  data: { id: name },
+                  headers: {
+                    "Content-type": "application/json",
+                    Accept: "*/*",
+                  },
+                })
+              );
             }}
           >
             삭제

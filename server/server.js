@@ -65,9 +65,35 @@ app.get("/get/data", (req, res) => {
 });
 
 // API Post
+
 app.post("/add/data", (req, res) => {
   console.log(req.body);
-  Models.Board.update(req.body, { where: req.body["id"] })
+  Models.Board.create(req.body)
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+// API Put
+app.put("/update/data", (req, res) => {
+  console.log(req.body);
+  console.log(req.body["id"]);
+  Models.Board.update(req.body, { where: req.body["id"], truncate: true })
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+// API Delete
+app.delete("/delete/data", (req, res) => {
+  console.log(req.body);
+  Models.Board.destroy({ where: { id: Number(req.body["id"]) } })
     .then((result) => {
       console.log(result);
     })
