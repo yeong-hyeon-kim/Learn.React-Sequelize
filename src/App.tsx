@@ -5,18 +5,65 @@ import "./App.css";
 function App() {
   const [state, setState] = useState({ list: [] });
 
+  let GetData = async () => {
+    const res = await axios.get("http://localhost:4000/get/data");
+
+    if (res.data[0] === undefined) {
+      let cover = [];
+      cover.push(res.data);
+    }
+    setState({ list: res.data });
+  }
+
+  let DeleteData =  async(e : any) => {
+    const { name } = e.target;
+    console.log(name);
+    console.log(e.target);
+    console.log(
+      await axios("http://localhost:4000/delete/data", {
+        method: "delete",
+        data: { id: name },
+        headers: {
+          "Content-type": "application/json",
+          Accept: "*/*",
+        },
+      })
+    );
+  }
+  
+  let UpdateData =  async(e : any) => {
+    console.log("Update!");
+    console.log(e);
+    console.log(
+      await axios("http://localhost:4000/add/data", {
+        method: "post",
+        data: e,
+        headers: {
+          "Content-type": "application/json",
+          Accept: "*/*",
+        },
+      })
+    );
+  }
+
+  let CreateData = async(e : any) =>  {
+    axios("http://localhost:4000/add/data", {
+        method: "post",
+        data: {
+          title: e["title"],
+          contents: e["contents"],
+          date: e["date"],
+        },
+        headers: {
+          "Content-type": "application/json",
+          Accept: "*/*",
+        },
+      });
+  }
+
+  // Refresh Data
   useEffect(() => {
-    let list = async () => {
-      const res = await axios.get("http://localhost:4000/get/data");
-
-      if (res.data[0] === undefined) {
-        let cover = [];
-        cover.push(res.data);
-      }
-      setState({ list: res.data });
-    };
-
-    list();
+    GetData();
   }, []);
 
   let Banner = () => {
@@ -35,18 +82,20 @@ function App() {
             className="BtnUpdate"
             type="submit"
             onClick={async (e: any) => {
-              console.log("Update!");
-              console.log(item);
-              console.log(
-                await axios("http://localhost:4000/add/data", {
-                  method: "post",
-                  data: item,
-                  headers: {
-                    "Content-type": "application/json",
-                    Accept: "*/*",
-                  },
-                })
-              );
+              UpdateData(item);
+
+              // console.log("Update!");
+              // console.log(item);
+              // console.log(
+              //   await axios("http://localhost:4000/add/data", {
+              //     method: "post",
+              //     data: item,
+              //     headers: {
+              //       "Content-type": "application/json",
+              //       Accept: "*/*",
+              //     },
+              //   })
+              // );
             }}
           >
             수정
@@ -56,19 +105,22 @@ function App() {
             name={item["id"]}
             type="submit"
             onClick={async (e: any) => {
-              const { name } = e.target;
-              console.log(name);
-              console.log(e.target);
-              console.log(
-                await axios("http://localhost:4000/delete/data", {
-                  method: "delete",
-                  data: { id: name },
-                  headers: {
-                    "Content-type": "application/json",
-                    Accept: "*/*",
-                  },
-                })
-              );
+              DeleteData(e);
+              GetData();
+
+              // const { name } = e.target;
+              // console.log(name);
+              // console.log(e.target);
+              // console.log(
+              //   await axios("http://localhost:4000/delete/data", {
+              //     method: "delete",
+              //     data: { id: name },
+              //     headers: {
+              //       "Content-type": "application/json",
+              //       Accept: "*/*",
+              //     },
+              //   })
+              // );
             }}
           >
             삭제
@@ -126,30 +178,31 @@ function App() {
     //   setState({ list: res.data });
     // };
 
-    let InsertData = async (e: any) => {
-      axios("http://localhost:4000/add/data", {
-        method: "post",
-        data: {
-          title: insert["title"],
-          contents: insert["contents"],
-          date: insert["date"],
-        },
-        headers: {
-          "Content-type": "application/json",
-          Accept: "*/*",
-        },
-      });
 
-      const res = await axios.get("http://localhost:4000/get/data");
+    // let InsertData = async (e: any) => {
+      // axios("http://localhost:4000/add/data", {
+      //   method: "post",
+      //   data: {
+      //     title: insert["title"],
+      //     contents: insert["contents"],
+      //     date: insert["date"],
+      //   },
+      //   headers: {
+      //     "Content-type": "application/json",
+      //     Accept: "*/*",
+      //   },
+      // });
 
-      if (res.data[0] === undefined) {
-        let cover = [];
-        cover.push(res.data);
-        console.log(cover);
-      }
+      // const res = await axios.get("http://localhost:4000/get/data");
 
-      setState({ list: res.data });
-    };
+      // if (res.data[0] === undefined) {
+      //   let cover = [];
+      //   cover.push(res.data);
+      //   console.log(cover);
+      // }
+
+      // setState({ list: res.data });
+    // };
 
     return (
       <tr>
@@ -189,7 +242,9 @@ function App() {
               //     },
               //   })
               // );
-              await InsertData(e);
+              CreateData(insert);
+              GetData();
+
             }}
           >
             등록
