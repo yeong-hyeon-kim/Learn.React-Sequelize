@@ -13,9 +13,9 @@ function App() {
       cover.push(res.data);
     }
     setState({ list: res.data });
-  }
+  };
 
-  let DeleteData =  async(e : any) => {
+  let DeleteData = async (e: any) => {
     const { name } = e.target;
     console.log(name);
     console.log(e.target);
@@ -29,9 +29,9 @@ function App() {
         },
       })
     );
-  }
-  
-  let UpdateData =  async(e : any) => {
+  };
+
+  let UpdateData = async (e: any) => {
     console.log("Update!");
     console.log(e);
     console.log(
@@ -44,22 +44,22 @@ function App() {
         },
       })
     );
-  }
+  };
 
-  let CreateData = async(e : any) =>  {
+  let CreateData = async (e: any) => {
     axios("http://localhost:4000/add/data", {
-        method: "post",
-        data: {
-          title: e["title"],
-          contents: e["contents"],
-          date: e["date"],
-        },
-        headers: {
-          "Content-type": "application/json",
-          Accept: "*/*",
-        },
-      });
-  }
+      method: "post",
+      data: {
+        title: e["title"],
+        contents: e["contents"],
+        date: e["date"],
+      },
+      headers: {
+        "Content-type": "application/json",
+        Accept: "*/*",
+      },
+    });
+  };
 
   // Refresh Data
   useEffect(() => {
@@ -83,19 +83,6 @@ function App() {
             type="submit"
             onClick={async (e: any) => {
               UpdateData(item);
-
-              // console.log("Update!");
-              // console.log(item);
-              // console.log(
-              //   await axios("http://localhost:4000/add/data", {
-              //     method: "post",
-              //     data: item,
-              //     headers: {
-              //       "Content-type": "application/json",
-              //       Accept: "*/*",
-              //     },
-              //   })
-              // );
             }}
           >
             수정
@@ -107,20 +94,6 @@ function App() {
             onClick={async (e: any) => {
               DeleteData(e);
               GetData();
-
-              // const { name } = e.target;
-              // console.log(name);
-              // console.log(e.target);
-              // console.log(
-              //   await axios("http://localhost:4000/delete/data", {
-              //     method: "delete",
-              //     data: { id: name },
-              //     headers: {
-              //       "Content-type": "application/json",
-              //       Accept: "*/*",
-              //     },
-              //   })
-              // );
             }}
           >
             삭제
@@ -166,44 +139,6 @@ function App() {
       });
     };
 
-    // let list = async () => {
-    //   console.log("find");
-    //   const res = await axios.get("http://localhost:4000/get/data");
-
-    //   if (res.data[0] === undefined) {
-    //     let cover = [];
-    //     cover.push(res.data);
-    //   }
-
-    //   setState({ list: res.data });
-    // };
-
-
-    // let InsertData = async (e: any) => {
-      // axios("http://localhost:4000/add/data", {
-      //   method: "post",
-      //   data: {
-      //     title: insert["title"],
-      //     contents: insert["contents"],
-      //     date: insert["date"],
-      //   },
-      //   headers: {
-      //     "Content-type": "application/json",
-      //     Accept: "*/*",
-      //   },
-      // });
-
-      // const res = await axios.get("http://localhost:4000/get/data");
-
-      // if (res.data[0] === undefined) {
-      //   let cover = [];
-      //   cover.push(res.data);
-      //   console.log(cover);
-      // }
-
-      // setState({ list: res.data });
-    // };
-
     return (
       <tr>
         <td></td>
@@ -228,23 +163,8 @@ function App() {
             onClick={async (e: any) => {
               console.log("Insert!");
               console.log(insert);
-              // console.log(
-              //   await axios("http://localhost:4000/add/data", {
-              //     method: "post",
-              //     data: {
-              //       title: insert["title"],
-              //       contents: insert["contents"],
-              //       date: insert["date"],
-              //     },
-              //     headers: {
-              //       "Content-type": "application/json",
-              //       Accept: "*/*",
-              //     },
-              //   })
-              // );
               CreateData(insert);
               GetData();
-
             }}
           >
             등록
