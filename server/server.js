@@ -94,13 +94,24 @@ app.post("/add/data", (req, res) => {
     });
 });
 
-// Put
+// PUT
 app.put("/update/data", (req, res) => {
   console.log(req.body);
 
   let reqData = req.body;
 
-  Models.Board.update(req.body, { where: reqData["id"], truncate: true })
+  Models.Board.update(
+    {
+      title: reqData["title"],
+      contents: reqData["contents"],
+      date: reqData["date"],
+    },
+    {
+      where: {
+        id: Number(reqData["id"]),
+      },
+    }
+  )
     .then((result) => {
       console.log(result);
     })

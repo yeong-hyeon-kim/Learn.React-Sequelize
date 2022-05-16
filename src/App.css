@@ -61,6 +61,11 @@
   font-weight: bold;
 }
 
+.UpdateInput{
+  background-color: #282c34;
+  color: white;
+}
+
 input{
   margin-bottom: 1vh;
 }

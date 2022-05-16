@@ -31,13 +31,19 @@ function App() {
     );
   };
 
-  let UpdateData = async (e: any) => {
+  let UpdateData = async (e: any, item: any) => {
+    const { name } = e.target;
     console.log("Update!");
-    console.log(e);
+    console.log(item);
     console.log(
-      await axios("http://localhost:4000/add/data", {
-        method: "post",
-        data: e,
+      await axios("http://localhost:4000/update/data", {
+        method: "put",
+        data: {
+          id: name,
+          title: item["title"],
+          contents: item["contents"],
+          date: item["date"],
+        },
         headers: {
           "Content-type": "application/json",
           Accept: "*/*",
@@ -71,18 +77,58 @@ function App() {
   };
 
   let List = () => {
+    const [update, setUpdate] = useState({
+      title: "",
+      contents: "",
+      date: "",
+    });
+
+    const { title, contents, date } = update;
+
+    const onChangeUpdate = (e: any) => {
+      const { value, name } = e.target;
+      console.log(value);
+      setUpdate({
+        ...update,
+        [name]: value,
+      });
+    };
+
     let ItemList = state.list.map((item) => (
       <tr key={item["id"]}>
         <td>{item["id"]}</td>
-        <td>{item["title"]}</td>
-        <td>{item["contents"]}</td>
-        <td>{item["date"]}</td>
+        <td>
+          {item["title"]}
+          <input
+            className="UpdateInput"
+            name="title"
+            onChange={onChangeUpdate}
+          ></input>
+        </td>
+        <td>
+          {item["contents"]}
+          <input
+            className="UpdateInput"
+            name="contents"
+            onChange={onChangeUpdate}
+          ></input>
+        </td>
+        <td>
+          {item["date"]}
+          <input
+            className="UpdateInput"
+            name="date"
+            type="datetime-local"
+            onChange={onChangeUpdate}
+          ></input>
+        </td>
         <td>
           <button
             className="BtnUpdate"
+            name={item["id"]}
             type="submit"
             onClick={async (e: any) => {
-              UpdateData(item);
+              UpdateData(e, update);
             }}
           >
             수정
@@ -128,7 +174,14 @@ function App() {
       date: "",
     });
 
+    // const [update, setUpdate] = useState({
+    //   UpdateTitle: "",
+    //   UpdateContents: "",
+    //   UpdateDate: "",
+    // });
+
     const { title, contents, date } = insert;
+    // const { UpdateTitle, UpdateContents, UpdateDate } = update;
 
     const onChanges = (e: any) => {
       const { value, name } = e.target;
@@ -138,6 +191,15 @@ function App() {
         [name]: value,
       });
     };
+
+    // const onChangeUpdate = (e: any) => {
+    //   const { value, name } = e.target;
+    //   console.log(value);
+    //   setUpdate({
+    //     ...update,
+    //     [name]: value,
+    //   });
+    // };
 
     return (
       <tr>
