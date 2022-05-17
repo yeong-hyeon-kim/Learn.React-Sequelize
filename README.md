@@ -59,4 +59,4 @@
 
 
 ### index.js
-* sequelize를 사용하기 위한 설정으로 추정.
+* `Sequelize`를 사용하기 위한 설정으로 추정.
