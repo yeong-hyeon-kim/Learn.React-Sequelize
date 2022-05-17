@@ -56,3 +56,7 @@
 
 6. 기초 데이터 파일 적용, 삽입
    1. `npx sequelize db:seed:all  --debug`
+
+
+### index.js
+* sequelize를 사용하기 위한 설정으로 추정.
