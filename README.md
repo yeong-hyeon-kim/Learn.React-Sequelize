@@ -35,7 +35,7 @@
    1. `npx sequelize init`
 <br>
 
-1. 데이터베이스(Database) 생성
+2. 데이터베이스(Database) 생성
    1. `npx sequelize db:create --env development`
 <br>
 
