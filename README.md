@@ -32,21 +32,27 @@
 ## Sequelize
 
 1. 시퀼라이즈에 알맞게 프로젝트 디렉토리를 구성
+<br>
 `npx sequelize init`
 
 2. 데이터베이스(Database) 생성
+<br>
 `npx sequelize db:create --env development`
 
 3. 테이블(Table) 생성
+<br>
 `npx sequelize model:generate --name테이블명 --attributes 속성1:타입,속성2:타입,속성3:타입`
 `npx sequelize model:generate --name Board --attributes index:integer,title:string contents:string,date:string`
 
 4. 마이그레이션 적용
+<br>
  `npx sequelize db:migrate`
  
 5. 기초(Seed) 데이터 삽입
+<br>
 `npx sequelize seed:generate --name 초기 데이터 이름`
 `npx sequelize seed:generate --name initialData`
 
 6. 기초 데이터 파일 적용, 삽입
+<br>
 `npx sequelize db:seed:all  --debug`
