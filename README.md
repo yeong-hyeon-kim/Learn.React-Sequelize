@@ -3,10 +3,10 @@ b## Reactive
 * React C.R.U.D(Create, Read, Update, Delete) Template(Feat. Sequelize)
 
 ### 프로젝트 실행
-> npm run start
+> `npm run start`
 
 ### API 서버 실행
-> npm start server
+> `npm start server`
 
 ## Packages
 * 패키지 복원
