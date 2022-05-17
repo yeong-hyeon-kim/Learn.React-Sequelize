@@ -27,7 +27,7 @@
 * `cors`
 * `react-router-dom`
 
-## Sequelize-cli 사용법
+## Sequelize-CLI 사용법
 
 1. 시퀼라이즈에 알맞게 프로젝트 디렉토리를 구성
    1. `npx sequelize init`
