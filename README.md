@@ -8,10 +8,8 @@
 ### API 서버 실행
 > `npm start server`
 
-## Packages
-* 패키지 복원
-  >`npm install`
-
+## 패키지 복원(Packages Recovery)
+* `npm install`
 
 ### Required
 
@@ -29,7 +27,7 @@
 * `cors`
 * `react-router-dom`
 
-## Sequelize
+## Sequelize-cli 사용법
 
 1. 시퀼라이즈에 알맞게 프로젝트 디렉토리를 구성
    1. `npx sequelize init`
