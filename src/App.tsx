@@ -174,12 +174,6 @@ function App() {
       date: "",
     });
 
-    // const [update, setUpdate] = useState({
-    //   UpdateTitle: "",
-    //   UpdateContents: "",
-    //   UpdateDate: "",
-    // });
-
     const { title, contents, date } = insert;
     // const { UpdateTitle, UpdateContents, UpdateDate } = update;
 
@@ -191,15 +185,6 @@ function App() {
         [name]: value,
       });
     };
-
-    // const onChangeUpdate = (e: any) => {
-    //   const { value, name } = e.target;
-    //   console.log(value);
-    //   setUpdate({
-    //     ...update,
-    //     [name]: value,
-    //   });
-    // };
 
     return (
       <tr>
