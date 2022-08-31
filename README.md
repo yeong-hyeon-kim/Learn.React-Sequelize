@@ -1,5 +1,5 @@
-## 📕 프로젝트 개요(Introduce Project)
-### Reactive
+# 📕 Reactive
+
 * 리액트 Sequelize CRUD 예제 입니다.
 * React C.R.U.D(Create, Read, Update, Delete) Template(Feat. Sequelize)
 
@@ -10,10 +10,13 @@
 3. [Sequelize-UPDATE](#Sequelize-UPDATE)
 4. [Sequelize-DELETE](#Sequelize-DELETE)
 
-#### Sequelize-CREATE
-#### Sequelize-READ
-#### Sequelize-UPDATE
-#### Sequelize-DELETE
+### Sequelize-CREATE
+
+### Sequelize-READ
+
+### Sequelize-UPDATE
+
+### Sequelize-DELETE
 
 ## 💡 Sequelize-CLI 사용법
 
@@ -40,9 +43,34 @@
 6. 기초 데이터 파일 적용, 삽입합니다.
    1. `npx sequelize db:seed:all  --debug`
 
-### index.js
+* index.js
+   -`Sequelize`를 사용하기 위한 설정입니다.
 
-* `Sequelize`를 사용하기 위한 설정으로 추정.
+## 💻 개발 환경(Develop Environment)
+
+### 시스템 환경(System Environment)
+
+||운영체제(OS)|언어(Language)|프레임워크(Framework)|종속성(Dependency)|
+|-|:-:|:-:|:-:|:-:|
+|명칭(Name)|![Windows](https://img.shields.io/badge/Windows-0078D6?style=flat-square&logo=Windows&logoColor=white)|![TYPESCRIPT](https://img.shields.io/badge/TYPESCRIPT-3178C6?style=flat-square&logo=TypeScript&logoColor=white)|![REACT](https://img.shields.io/badge/REACT-61DAFB?style=flat-square&logo=React&logoColor=black)|![NPM](https://img.shields.io/badge/NPM-CB3837?style=flat-square&logo=npm&logoColor=white)|
+|버전(Version)|`10, 11`|`4.6.4`|`18.1.0`|`8.13.2`|
+
+### 브라우저 지원(Browser Support)
+
+|Chrome|Microsoft Edge|Firefox|
+|:-:|:-:|:-:|
+|![Chrome](https://img.shields.io/badge/Chrome-4285F4?style=flat-square&logo=GoogleChrome&logoColor=white)|![MicrosoftEdge](https://img.shields.io/badge/Edge-0078D7?style=flat-square&logo=MicrosoftEdge&logoColor=white)|![Firefox](https://img.shields.io/badge/Firefox-FF7139?style=flat-square&logo=FirefoxBrowser&logoColor=white)
+|`Latest` ✔|`Latest` ✔|`Latest` ✔|
+
+## 🔍 정보(Information)
+
+### 🖋️ 저자(Author)
+
+* [Yeonghyeon Kim](https://github.com/yeong-hyeon-kim) – codechemi@gmail.com
+
+### ⚖️ 라이센스(License)
+
+다음 라이센스를 준수하며 [License](./License)에서 자세한 정보를 확인할 수 있습니다.
 
 ## 📖 비고(Remark)
 
