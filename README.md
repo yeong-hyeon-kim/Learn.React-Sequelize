@@ -1,7 +1,6 @@
 # 📕 Reactive
 
-* 리액트 Sequelize CRUD 예제 입니다.
-* React C.R.U.D(Create, Read, Update, Delete) Template(Feat. Sequelize)
+> 리액트에서 시퀼라이즈(Sequelize) 사용해봅니다.
 
 ## 🏷️ 기능(Function)
 
@@ -9,14 +8,6 @@
 2. [Sequelize-READ](#Sequelize-READ)
 3. [Sequelize-UPDATE](#Sequelize-UPDATE)
 4. [Sequelize-DELETE](#Sequelize-DELETE)
-
-### Sequelize-CREATE
-
-### Sequelize-READ
-
-### Sequelize-UPDATE
-
-### Sequelize-DELETE
 
 ## 💡 Sequelize-CLI 사용법
 
