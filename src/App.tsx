@@ -100,6 +100,7 @@ function App() {
         <td>
           {item["title"]}
           <input
+            title="UpdateTitle"
             className="UpdateInput"
             name="title"
             onChange={onChangeUpdate}
@@ -108,6 +109,7 @@ function App() {
         <td>
           {item["contents"]}
           <input
+            title="UpdateContent"
             className="UpdateInput"
             name="contents"
             onChange={onChangeUpdate}
@@ -116,6 +118,7 @@ function App() {
         <td>
           {item["date"]}
           <input
+            title="UpdateDate"
             className="UpdateInput"
             name="date"
             type="datetime-local"
@@ -190,13 +193,24 @@ function App() {
       <tr>
         <td></td>
         <td>
-          <input name="title" value={title} onChange={onChanges}></input>
-        </td>
-        <td>
-          <input name="contents" value={contents} onChange={onChanges}></input>
+          <input
+            title="Title"
+            name="title"
+            value={title}
+            onChange={onChanges}
+          ></input>
         </td>
         <td>
           <input
+            title="Content"
+            name="contents"
+            value={contents}
+            onChange={onChanges}
+          ></input>
+        </td>
+        <td>
+          <input
+            title="Date"
             type="datetime-local"
             name="date"
             value={date}
